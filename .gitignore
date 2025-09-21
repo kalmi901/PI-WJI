@@ -1,0 +1,9 @@
+data_repository/*
+!data_repository/.gitkeep
+figure_repository/*
+!figure_repository.gitkeep
+html/*
+!html/.gitkeep
+src/__pycache__/*
+src/bubble_models/__pycache__/*
+src/utils/__pycache__/*
