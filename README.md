@@ -151,7 +151,7 @@ read -p "Press enter to exit..."
 ### Colab Tutorial
 A Colab tutorial is provided to demonstrate the usage of the code.
 
-<a target="_blank" href="https://colab.research.google.com/https://github.com/kalmi901/PI-WJI/blob/main/notebooks/tutorial.ipynb">
+<a target="_blank" href="https://colab.research.google.com/github/kalmi901/PI-WJI/blob/main/notebooks/tutorial.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
 </a>
 
