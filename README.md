@@ -21,14 +21,14 @@ where $`x_{1,i}=R_i/R_{0,i}`$ is the dimensionless bubble radius, $`b_i`$ is the
 B_{i,j}=D_{1,i,j}\cdot A_{i,j} \cdot D_{2,i,j} + I_{i,j},
 ```
 
-where $`D_{1,i,j}`$ and $`D_{2,i,j}`$ are diagonal matrices, $`A_{i,j}`$ is a constant matrix and $`I_{i,j}`$ is a dentity matrix. Note that the diagonal elements are $`A_{i,i}=0`$.
+where $`D_{1,i,j}`$ and $`D_{2,i,j}`$ are diagonal matrices, $`A_{i,j}`$ is a constant matrix and $`I_{i,j}`$ is a identity matrix. Note that the diagonal elements are $`A_{i,i}=0`$.
 
 ### Iteration process ###
 
 The iteration process with the relaxation factor $`\omega_{opt}`$ is written as
 
 ```math
-\mathbf{x_2}^{(k+1)}=\omega_{opt}\left(\mathbf{b}- \mathbf{D_1} \cdot \mathbf{A} \cdot \mathbf{D_2} \right) + \left(1 - \omega_{opt}\right)\cdot \mathbf{x_2}^{(k)},
+\mathbf{x_2}^{(k+1)}=\omega_{opt}\left(\mathbf{b}- \mathbf{D_1} \cdot \mathbf{A} \cdot \mathbf{D_2} \cdot \mathbf{x_2}^{(k)}\right) + \left(1 - \omega_{opt}\right)\cdot \mathbf{x_2}^{(k)},
 ```
 
 where the relaxation parameter is the function of the maximal dimensionless bubble radius
@@ -64,7 +64,7 @@ PI-WJI/
 │  ├─ bubble_models/        # ODE models with different linear solvers
 │  ├─ utils/                # Utility functions
 │  ├─ bubble_size_and_spatial_distribution_generator.py
-│  └─ solver_bubble_cluster.py
+│  └─ solve_bubble_cluster.py
 ├─ LICENSE
 └─ README.md
 ```
@@ -119,7 +119,7 @@ python src/bubble_size_and_spatial_ditribution_generator.py --help
 
 ### C) Shell example (parameter study)
 The recommended method for running simulations is to use shell scripts. For example, the shell script below searches for optimal relaxation parameter using a brute-force technique (`jacobi_bruteforce`) in a cluster configured for `N=32` bubbles and `SEED=21`.
-`P2=25.0`means the excitation freuqency was $`25.0\, \mathrm{kHz}`$.
+`P2=25.0`means the excitation frequency was $`25.0\, \mathrm{kHz}`$.
 
 ```
 #!/usr/bin/env bash
@@ -139,7 +139,7 @@ for P1 in 0.6 0.8 1.0 1.2; do
 echo ">>> $P1"
   $PYTHON "$SCRIPT" --cluster.number-of-bubbles $N --cluster.seed $SEED  \
                     --solver.measure linalg \
-                    --solver.bubble_model jacobi_bruteforce \
+                    --solver.bubble-model jacobi_bruteforce \
                     --general.P1 $P1 --general.P2 $P2
 
 done
