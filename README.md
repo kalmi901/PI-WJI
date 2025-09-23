@@ -10,9 +10,9 @@ The dimensionless ODE system describing the dynamics of an N-bubble system is wr
 
 ```math
 \begin{align*}
-\dot{x}_{1,i}&=x_{2,i}, \\
-\sum_{j=1}^N{B_{i,j}\dot{x}_{2,j}}&=b_i
-\end{align*},
+\dot{x}_{1,i}&=&x_{2,i}, \\
+\sum_{j=1}^N{B_{i,j}\dot{x}_{2,j}}&=&b_i,
+\end{align*}
 ```
 
 where $`x_{1,i}=R_i/R_{0,i}`$ is the dimensionless bubble radius, $`b_i`$ is the right-hand side of the ODE and $`B_{i,j}`$ is the instantaneous coupling matrix. Exploiting the special structure of the coupling matrix, the following decomposition is applied
@@ -49,13 +49,12 @@ The values of fitted coefficients $`a`$, $`b`$, and $`c`$ depend on the bubble n
 ```text
 PI-WJI/
 ├─ data_repository/         # Input data (raw or small sample configs)
-│  └─ cluster_data/         # Cluster configurations (inputs)
 │  ├─ metrics/              # Solver metrics (error, iterations, etc.)
 │  ├─ runtimes/             # Total runtimes
 │  ├─ time_series/          # Time-series outputs
-│  └─ cluster_data/         # Derived cluster states per run
+│  └─ cluster_data/         # Cluster configurations (inputs)
 ├─ figure_repository/       # Plots saved from notebooks/runs
-├─ html/                    # Plotly-rendered HTML reports
+├─ html/                    # Plotly-rendered HTML figs of clusters
 ├─ notebooks/
 │  ├─ paper_figs.ipynb                  # Paper figures
 │  ├─ sim_results_N_dependence.ipynb    # (N-dependence)
@@ -89,7 +88,7 @@ python src/solve_bubble_cluster.py
     --cluster.number-of-bubbles 32
     --cluster.seed 42
     --solver.bubble-model jacobi_fitted
-    --solver.jacobi_params 0.5 0.5, -0.04
+    --solver.jacobi-params 0.5 0.5 -0.04
     --solver.measure runtime
     --solver.repeat-measure 10 
     --general.P1 1.2
@@ -150,7 +149,7 @@ read -p "Press enter to exit..."
 ```
 
 ### Colab Tutorial
-A simple Colab notebook is provided to reproduce key results.
+A Colab tutorial is provided to demonstrate the usage of the code.
 
 <a target="_blank" href="https://colab.research.google.com/https://github.com/kalmi901/PI-WJI/blob/main/notebooks/tutorial.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">

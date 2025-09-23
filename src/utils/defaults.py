@@ -99,6 +99,6 @@ class SolverConfig():
     max_iter: int = 100
     """ Linsolve maximum number of iterations """
     plot_results: bool = False
-    """ If the the R(t) curves are plotted after simulations """
+    """ If True the R(t) curves are plotted after simulations """
 
 

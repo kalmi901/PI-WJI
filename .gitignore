@@ -1,5 +1,3 @@
-data_repository/*
-!data_repository/.gitkeep
 figure_repository/*
 !figure_repository.gitkeep
 html/*
@@ -7,3 +5,11 @@ html/*
 src/__pycache__/*
 src/bubble_models/__pycache__/*
 src/utils/__pycache__/*
+data_repository/cluster_data/*
+!data_repository/cluster_data/.gitkeep
+data_repository/metrics/*
+!data_repository/metrics/.gitkeep
+data_repository/runtime/*
+!data_repository/runtime/.gitkeep
+data_repository/time_series/*
+!data_repository/time_series/.gitkeep
